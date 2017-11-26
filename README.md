@@ -17,3 +17,7 @@ PRs for updating the repository commits to known-working are welcomed.
 2. Run `$ bazel build :moby-bazel-go-example`
 
 The first build will take a very long time because all remote dependencies have to be fetched and build. But repeated builds should be very fast.
+
+# See also
+
+ - https://github.com/moby/moby/pull/35600
