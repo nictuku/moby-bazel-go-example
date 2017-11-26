@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "gazelle", "go_binary", "go_library")
+
+gazelle(
+    name = "gazelle",
+    external = "external",
+    prefix = "github.com/nictuku/moby-bazel-go-example",
+)
+
+go_library(
+    name = "go_default_library",
+    srcs = ["main.go"],
+    importpath = "github.com/nictuku/moby-bazel-go-example",
+    visibility = ["//visibility:private"],
+    deps = [
+        "@com_github_docker_docker//api/types:go_default_library",
+        "@com_github_docker_docker//client:go_default_library",
+        "@com_github_fsouza_go_dockerclient//:go_default_library",
+    ],
+)
+
+go_binary(
+    name = "moby-bazel-go-example",
+    importpath = "github.com/nictuku/moby-bazel-go-example",
+    library = ":go_default_library",
+    visibility = ["//visibility:public"],
+)
